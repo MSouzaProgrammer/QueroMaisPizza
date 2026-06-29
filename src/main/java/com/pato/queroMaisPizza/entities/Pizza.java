@@ -19,13 +19,17 @@ public class Pizza {
     private Long id;
     private String sabor;
     private Double precoBase;
+    private String descricao;
+    private String ImagemUrl;
 
     public Pizza(){}
 
-    public Pizza(Long id, String sabor, Double precoBase) {
+    public Pizza(Long id, String sabor, Double precoBase, String descricao, String ImagemUrl) {
         this.id = id;
         this.sabor = sabor;
         this.precoBase = precoBase;
+        this.descricao = descricao;
+        this.ImagemUrl = ImagemUrl;
     }
     
 }

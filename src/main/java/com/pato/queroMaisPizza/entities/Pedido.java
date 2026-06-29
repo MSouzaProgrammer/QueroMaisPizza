@@ -1,8 +1,10 @@
 package com.pato.queroMaisPizza.entities;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pato.queroMaisPizza.enums.StatusPedido;
 
 import jakarta.persistence.CascadeType;
@@ -33,18 +35,19 @@ public class Pedido {
     private Address address;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemPedido> listaPedido;
+    @JsonManagedReference
+    private List<ItemPedido> itens = new ArrayList<>(); // inicializa!
 
-    public Pedido() {}
+    public Pedido() {
+    }
+
     public Pedido(Long id, Instant momento, StatusPedido statusPedido, Double total, Address address,
-            List<ItemPedido> listaPedido) {
+            List<ItemPedido> itens) {
         this.id = id;
         this.momento = momento;
         this.statusPedido = statusPedido;
         this.total = total;
         this.address = address;
-        this.listaPedido = listaPedido;
+        this.itens = itens;
     }
-
-    
 }
